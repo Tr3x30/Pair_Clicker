@@ -1,0 +1,19 @@
+#infoArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Square{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+}
+
+#infoArea .infoImage {
+    width: 64px;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+
