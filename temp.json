@@ -1,0 +1,15 @@
+{
+    "economy": {
+        "resources": 0,
+        "last-focused": 1770324032
+    },
+    "purchased-items": {
+        "buffs": [
+            "buff1", "buff2", "..."   
+        ],
+        "upgrades": {
+            "grandpa": 0,
+            "idk": 0
+        }
+    }
+}

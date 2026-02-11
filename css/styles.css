@@ -1,0 +1,53 @@
+body,
+html {
+    margin: 0px;
+    overflow: hidden;
+}
+
+#container {
+    display: flex;
+}
+
+#generationArea {
+    top: 0%;
+    left: 0%;
+    width: 30vw;
+    height: 100vh;
+    background-color: antiquewhite;
+}
+
+#infoArea {
+    top: 0%;
+    left: 30vw;
+    width: 40vw;
+    height: 100vh;
+    background-color: beige;
+}
+
+#upgradeArea {
+    display: flex;
+    flex-direction: column;
+    top: 0%;
+    left: 70vw;
+    width: 30vw;
+    height: 100vh;
+    background-color: blanchedalmond;
+    padding-right: 2px;
+}
+
+@media screen and (max-width: 768px) {
+    #upgradeArea {
+        flex-grow: 1;
+    }
+
+    #generationArea {
+        width: 40vw;
+        min-width: 200px;
+        height: 100vh;
+        
+    }
+
+    #infoArea {
+        width: 0;
+    }
+}
