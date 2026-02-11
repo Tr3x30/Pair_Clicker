@@ -73,6 +73,7 @@
 }
 
 #upgradeArea #list .item {
+    cursor: pointer;
     position: relative;
     display: flex;
     width: 90%;
