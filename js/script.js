@@ -15,6 +15,23 @@ const formatter = new Intl.NumberFormat('en-US', {
     maximumFractionDigits: 1
 });
 
+function parseCompactNumber(str) {
+    const multipliers = {
+        K: 1e3,
+        M: 1e6,
+        B: 1e9,
+        T: 1e12
+    };
+
+    const match = str.trim().match(/^([\d.]+)\s*([KMBT])?$/i);
+    if (!match) return NaN;
+
+    const value = parseFloat(match[1]);
+    const suffix = match[2]?.toUpperCase();
+
+    return suffix ? value * multipliers[suffix] : value;
+}
+
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -101,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!item) return;
 
         const costEl = item.querySelector('#cost');
-        let cost = parseInt(costEl.textContent.trim(), 10);
+        let cost = parseCompactNumber(costEl.textContent.trim(), 10);
         const nameEl = item.querySelector('#name');
         const name = nameEl.textContent.trim();
         const counterEl = item.querySelector('#counter');
