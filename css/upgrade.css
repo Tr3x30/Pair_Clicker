@@ -118,7 +118,7 @@
 #upgradeArea #list .item #info #purchase #name {
     text-align: left;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 2.5vw;
+    font-size: 2vw;
 }
 
 #upgradeArea #list .item #info #purchase #cost {

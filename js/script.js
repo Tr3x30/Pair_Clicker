@@ -1,6 +1,13 @@
 let resources = 200;
-let resourcesPerSecond = 0;
-let boughtUpgrades = {}
+let resourcesPerSecond = 10;
+let boughtUpgrades = {
+    "GRANDMA": 0,
+    "GRANDPA": 0,
+    "BAKER": 0,
+    "FACTORY": 0,
+    "FARMER": 0,
+    "BANK": 0
+};
 
 // ChatGPT cookup
 const formatter = new Intl.NumberFormat('en-US', {
@@ -55,6 +62,9 @@ function gainResourcesButton(e, popping, btn) {
 function automaticResourceGeneration() {
     const resourceCounter = document.querySelector('#generationArea #resourceCounter');
     resources += resourcesPerSecond;
+
+    resourceCounter.textContent =
+        formatter.format(resources) + " resources";
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -72,26 +82,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!item) return;
 
         const costEl = item.querySelector('#cost');
-        const cost = parseInt(costEl.textContent.trim(), 10);
+        let cost = parseInt(costEl.textContent.trim(), 10);
         const nameEl = item.querySelector('#name');
         const name = nameEl.textContent.trim();
-        const counterEl = item.querySelector('#count');
-        const counter = counterEl.textContent.trim();
+        const counterEl = item.querySelector('#counter');
+        const resourceCounter = document.querySelector('#generationArea #resourceCounter');
 
-        console.log('Name:', name)
+        console.log('Name:', name);
         console.log('Cost:', cost);
 
-        if (resources > cost) {
+        if (resources >= cost) {
             console.log("buying...");
             resources = resources - cost;
             resourceCounter.textContent =
                 formatter.format(resources) + " resources";
 
+            cost = Math.floor(cost * 1.1) + 1;
+            costEl.textContent = formatter.format(cost);
+
             if (name in boughtUpgrades) {
-                boughtUpgrades.counter += 1;
-            } else {
-                boughtUpgrades[name] = 1;
+                console.log('exists');
+                boughtUpgrades[name] += 1;
             }
+
+            counterEl.textContent = formatter.format(boughtUpgrades[name]);
+
             console.log("hi");
             console.log(boughtUpgrades);
         }
