@@ -1,5 +1,5 @@
-let resources = 200;
-let resourcesPerSecond = 10;
+let resources = 50000;
+let resourcesPerSecond = 0;
 let boughtUpgrades = {
     "GRANDMA": 0,
     "GRANDPA": 0,
@@ -67,6 +67,25 @@ function automaticResourceGeneration() {
         formatter.format(resources) + " resources";
 }
 
+function calculateResourcesPerSecond() {
+    const generationCounter = document.querySelector('#generationArea #perSecond');
+    let perSecond = 0;
+
+    const keys = Object.keys(boughtUpgrades); // e.g. ["grandma", "factory", ...] or ["0","1",...]
+    for (let i = 0; i < keys.length; i++) {
+        const k = keys[i];
+        const count = Number(boughtUpgrades[k]) || 0; // force numeric, fallback to 0
+
+        const add = count * (2 ** (Math.floor((i + 1) * 1.5)));
+        perSecond += add;
+
+        console.log(k, count, add);
+    }
+
+    resourcesPerSecond = perSecond;
+    generationCounter.textContent = formatter.format(perSecond) + " per second";
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const btn = document.querySelector('#generationArea #buttonContainer');
     let popping = false
@@ -106,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             counterEl.textContent = formatter.format(boughtUpgrades[name]);
-
+            calculateResourcesPerSecond();
             console.log("hi");
             console.log(boughtUpgrades);
         }
