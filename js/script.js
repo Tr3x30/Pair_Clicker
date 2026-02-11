@@ -16,8 +16,8 @@ function getRandomIntInclusive(min, max) {
 function gainResourcesButton(e, popping, btn) {
     const resourceCounter = document.querySelector('#generationArea #resourceCounter');
 
-    const gained = resources + 1;
-    resources = resources * 2 + 1;
+    const gained = 1;
+    resources = resources + gained;
 
     resourceCounter.textContent =
         formatter.format(resources) + " resources";
@@ -40,9 +40,6 @@ function gainResourcesButton(e, popping, btn) {
         text.remove();
     });
 
-    resources = resources * 2 + 1;
-    resourceCounter.textContent = formatter.format(resources) + " resources";
-
     if (popping) return;
     popping = true;
 
@@ -61,6 +58,5 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', (e) => {
         gainResourcesButton(e, popping, btn);
     });
-
 
 });

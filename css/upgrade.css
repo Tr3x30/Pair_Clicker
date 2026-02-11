@@ -87,6 +87,10 @@
     margin-top: 5%;
 }
 
+#upgradeArea #list .item:last-child {
+    margin-bottom: 5%;
+}
+
 #upgradeArea #list .item #counter {
     text-align: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
