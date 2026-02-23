@@ -22,9 +22,9 @@ let buffsUnlocked = {
 let achievements = {
     "The Meaning of Grind": { unlocked: false, requirement: 42 },
     "Triple Digits": { unlocked: false, requirement: 100 },
-    "I'd bake five hundred more": { unlocked: false, requirement: 500 },
-    "To be the man that baked a thousand": { unlocked: false, requirement: 1000 },
-    "Donuts to fall down at your door": { unlocked: false, requirement: 1500 },
+    "I would bake five hundred more": { unlocked: false, requirement: 500 },
+    "To be the man that baked a thousand donuts": { unlocked: false, requirement: 1000 },
+    "To fall down at your door": { unlocked: false, requirement: 1500 },
     "Pocket Change": { unlocked: false, requirement: 5000 },
     "Five Digits, Baby": { unlocked: false, requirement: 10000 },
     "Resource Hoarder": { unlocked: false, requirement: 50000 },
@@ -34,7 +34,8 @@ let achievements = {
     "Resource Tycoon": { unlocked: false, requirement: 2500000 },
     "Economic Overlord": { unlocked: false, requirement: 5000000 },
     "Untouchable Empire": { unlocked: false, requirement: 7500000 },
-    "Ten Million Strong": { unlocked: false, requirement: 10000000 }
+    "Ten Million Strong": { unlocked: false, requirement: 10000000 },
+    "To see all the possible outcomes...": { unlocked: false, requirement: 14000005 }
 };
 
 // ChatGPT cookup
