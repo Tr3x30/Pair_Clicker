@@ -1,4 +1,4 @@
-let resources = 500000;
+let resources = 525590;
 let resourcesPerSecond = 0;
 let boughtUpgrades = {
     "GRANDMA": 0,
@@ -19,12 +19,29 @@ let buffsUnlocked = {
     "BANK": 1
 }
 
+let achievements = {
+    "The Meaning of Grind": { unlocked: false, requirement: 42 },
+    "Triple Digits": { unlocked: false, requirement: 100 },
+    "I'd bake five hundred more": { unlocked: false, requirement: 500 },
+    "To be the man that baked a thousand": { unlocked: false, requirement: 1000 },
+    "Donuts to fall down at your door": { unlocked: false, requirement: 1500 },
+    "Pocket Change": { unlocked: false, requirement: 5000 },
+    "Five Digits, Baby": { unlocked: false, requirement: 10000 },
+    "Resource Hoarder": { unlocked: false, requirement: 50000 },
+    "Six Figure Clicker": { unlocked: false, requirement: 100000 },
+    "♫ 525,600 Donuts ♫": { unlocked: false, requirement: 525600 },
+    "Millionaire Mindset": { unlocked: false, requirement: 1000000 },
+    "Resource Tycoon": { unlocked: false, requirement: 2500000 },
+    "Economic Overlord": { unlocked: false, requirement: 5000000 },
+    "Untouchable Empire": { unlocked: false, requirement: 7500000 },
+    "Ten Million Strong": { unlocked: false, requirement: 10000000 }
+};
+
 // ChatGPT cookup
 const formatter = new Intl.NumberFormat('en-US', {
     notation: 'compact',
     maximumFractionDigits: 1
 });
-
 function parseCompactNumber(str) {
     const multipliers = {
         K: 1e3,
@@ -48,11 +65,26 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function checkAchievements() {
+    for (const i in achievements) {
+        let achievement = achievements[i];
+        if (achievement['unlocked']) {
+            continue;
+        }
+
+        if (resources >= achievement['requirement']) {
+            console.log('achievement get: ', i);
+            achievement['unlocked'] = true;
+        }
+    }
+}
+
 function gainResourcesButton(e, popping, btn) {
     const resourceCounter = document.querySelector('#generationArea #resourceCounter');
 
     const gained = 1 * buffsUnlocked["CLICK"];
     resources = resources + gained;
+    checkAchievements();
 
     resourceCounter.textContent =
         formatter.format(resources) + " Donuts";
@@ -89,6 +121,7 @@ function gainResourcesButton(e, popping, btn) {
 function automaticResourceGeneration() {
     const resourceCounter = document.querySelector('#generationArea #resourceCounter');
     resources += resourcesPerSecond;
+    checkAchievements();
 
     resourceCounter.textContent =
         formatter.format(resources) + " Donuts";
