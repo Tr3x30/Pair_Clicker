@@ -131,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     list.addEventListener('click', (e) => {
         const item = e.target.closest('.item');
+        console.log(item);
         if (!item) return;
 
         const costEl = item.querySelector('#cost');
@@ -140,7 +141,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const counterEl = item.querySelector('#counter');
         const resourceCounter = document.querySelector('#generationArea #resourceCounter');
 
+        const img = item.querySelector(".shopItem");
+        const type = img.dataset.name;
+        const column = document.getElementById(type);
+        const newImg = document.createElement("img");
+
         if (resources >= cost) {
+            newImg.src = img.src;
+            newImg.classList.add("infoImage");
+            column.appendChild(newImg);
             resources = resources - cost;
             resourceCounter.textContent =
                 formatter.format(resources) + " resources";
