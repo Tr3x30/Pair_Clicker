@@ -1,4 +1,4 @@
-let resources = 500000000;
+let resources = 0;
 let resourcesPerSecond = 0;
 let boughtUpgrades = {
     "GRANDMA": 0,
@@ -55,7 +55,7 @@ function gainResourcesButton(e, popping, btn) {
     resources = resources + gained;
 
     resourceCounter.textContent =
-        formatter.format(resources) + " resources";
+        formatter.format(resources) + " Donuts";
 
     // create text
     const text = document.createElement('div');
@@ -91,7 +91,7 @@ function automaticResourceGeneration() {
     resources += resourcesPerSecond;
 
     resourceCounter.textContent =
-        formatter.format(resources) + " resources";
+        formatter.format(resources) + " Donuts";
 }
 
 function calculateResourcesPerSecond() {
@@ -103,7 +103,7 @@ function calculateResourcesPerSecond() {
         const k = keys[i];
         const count = Number(boughtUpgrades[k]) || 0;
 
-        const add = count * (2 ** (Math.floor((i + 1) * 1.5))) * buffsUnlocked[k];
+        const add = count * (5 ** Math.floor(i)) * buffsUnlocked[k];
         perSecond += add;
 
         console.log(k, count, add);
