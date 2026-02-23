@@ -1,4 +1,4 @@
-let resources = 0;
+let resources = 500000;
 let resourcesPerSecond = 0;
 let boughtUpgrades = {
     "GRANDMA": 0,
@@ -113,6 +113,19 @@ function calculateResourcesPerSecond() {
     generationCounter.textContent = formatter.format(perSecond) + " per second";
 }
 
+// ChatGPT assist
+function getFirstVisibleChild(element) {
+    const children = element.children;
+    console.log(element);
+
+    for (let i = 0; i < children.length; i++) {
+        const child = children[i];
+        if (child.style.display !== 'none') {
+            return child;
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const btn = document.querySelector('#generationArea #buttonContainer');
     let popping = false
@@ -125,6 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
     buffShop.addEventListener('click', (e) => {
         const buff = e.target.closest('.buff');
         console.log(buff);
+        if (buff === null) {
+            return;
+        }
+
         const value = buff.dataset.value;
 
         const costEl = buff.querySelector('.cost');
@@ -134,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resources >= cost) {
             resources = resources - cost;
             buff.style.display = "none";
-            buff.nextElementSibling.style.marginLeft = "0";
+            getFirstVisibleChild(buff.parentElement).style.marginLeft = "0";
 
             if (value === "ALL") {
                 for (key in buffsUnlocked) {
