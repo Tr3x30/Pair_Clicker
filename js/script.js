@@ -9,6 +9,16 @@ let boughtUpgrades = {
     "BANK": 0
 };
 
+let buffs = {
+    "CLICK": 1,
+    "GRANDMA": 1,
+    "GRANDPA": 1,
+    "BAKER": 1,
+    "FACTORY": 1,
+    "FARMER": 1,
+    "BANK": 1
+}
+
 // ChatGPT cookup
 const formatter = new Intl.NumberFormat('en-US', {
     notation: 'compact',
@@ -110,6 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
         gainResourcesButton(e, popping, btn);
     });
 
+    const buffs = document.querySelectorAll('#upgradeArea #buffShop .buff');
+    console.log(buffs);
+    buffShop.addEventListener('click', (e) => {
+        console.log('what');
+    });
+
     const upgrades = document.querySelectorAll('#upgradeArea #shopTabs #listOuter #list .item');
     console.log(upgrades);
 
@@ -124,11 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const counterEl = item.querySelector('#counter');
         const resourceCounter = document.querySelector('#generationArea #resourceCounter');
 
-        console.log('Name:', name);
-        console.log('Cost:', cost);
-
         if (resources >= cost) {
-            console.log("buying...");
             resources = resources - cost;
             resourceCounter.textContent =
                 formatter.format(resources) + " resources";
@@ -143,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             counterEl.textContent = formatter.format(boughtUpgrades[name]);
             calculateResourcesPerSecond();
-            console.log("hi");
             console.log(boughtUpgrades);
         }
     });

@@ -46,6 +46,20 @@
     aspect-ratio: 1;
     margin-left: 2vh;
     min-width: 50px;
+    cursor: pointer;
+    font-size: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2%;
+}
+
+#upgradeArea #buffShop .buff .name {
+    text-align: center;
+}
+
+#upgradeArea #buffShop .buff .cost {
+    text-align: center;
 }
 
 #upgradeArea #buffShop .buff:first-child {
@@ -98,7 +112,7 @@
     font-size: 4.5vw;
 }
 
-#upgradeArea #list .item #info {
+#upgradeArea #list .item .info {
     display: flex;
     position: relative;
     background-color: orange;
@@ -115,13 +129,13 @@
     padding: 0 2%;
 }
 
-#upgradeArea #list .item #info #purchase #name {
+#upgradeArea #list .item .info #purchase #name {
     text-align: left;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 2vw;
 }
 
-#upgradeArea #list .item #info #purchase #cost {
+#upgradeArea #list .item .info #purchase #cost {
     text-align: left;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
