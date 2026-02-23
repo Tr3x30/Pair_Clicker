@@ -1,19 +1,32 @@
 #infoArea{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    gap:20px;
+    overflow-y: auto;
+    height: 100vh;
 }
 
-#Square{
-    width: 100%;
+.column {
     display:flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+    width:400px;
+    min-height: 200px;
+    height:auto;
+    overflow: hidden;
+
+    padding-bottom: 10px;
+    border-bottom:2px solid #444;
 }
 
-#infoArea .infoImage {
-    width: 64px;
-    height: auto;
-    image-rendering: pixelated;
+.infoImage{
+    width:60px;
+    height: 60px;
+    margin: 5px;
 }
+
 
 
