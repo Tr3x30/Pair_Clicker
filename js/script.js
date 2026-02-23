@@ -1,4 +1,4 @@
-let resources = 50000;
+let resources = 500000000;
 let resourcesPerSecond = 0;
 let boughtUpgrades = {
     "GRANDMA": 0,
@@ -9,7 +9,7 @@ let boughtUpgrades = {
     "BANK": 0
 };
 
-let buffs = {
+let buffsUnlocked = {
     "CLICK": 1,
     "GRANDMA": 1,
     "GRANDPA": 1,
@@ -51,7 +51,7 @@ function getRandomIntInclusive(min, max) {
 function gainResourcesButton(e, popping, btn) {
     const resourceCounter = document.querySelector('#generationArea #resourceCounter');
 
-    const gained = 1;
+    const gained = 1 * buffsUnlocked["CLICK"];
     resources = resources + gained;
 
     resourceCounter.textContent =
@@ -98,12 +98,12 @@ function calculateResourcesPerSecond() {
     const generationCounter = document.querySelector('#generationArea #perSecond');
     let perSecond = 0;
 
-    const keys = Object.keys(boughtUpgrades); // e.g. ["grandma", "factory", ...] or ["0","1",...]
+    const keys = Object.keys(boughtUpgrades);
     for (let i = 0; i < keys.length; i++) {
         const k = keys[i];
-        const count = Number(boughtUpgrades[k]) || 0; // force numeric, fallback to 0
+        const count = Number(boughtUpgrades[k]) || 0;
 
-        const add = count * (2 ** (Math.floor((i + 1) * 1.5)));
+        const add = count * (2 ** (Math.floor((i + 1) * 1.5))) * buffsUnlocked[k];
         perSecond += add;
 
         console.log(k, count, add);
@@ -123,7 +123,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const buffs = document.querySelectorAll('#upgradeArea #buffShop .buff');
     console.log(buffs);
     buffShop.addEventListener('click', (e) => {
-        console.log('what');
+        const buff = e.target.closest('.buff');
+        console.log(buff);
+        const value = buff.dataset.value;
+
+        const costEl = buff.querySelector('.cost');
+        let cost = parseCompactNumber(costEl.textContent.trim(), 10);
+        console.log(cost);
+
+        if (resources >= cost) {
+            resources = resources - cost;
+            buff.style.display = "none";
+            buff.nextElementSibling.style.marginLeft = "0";
+
+            if (value === "ALL") {
+                for (key in buffsUnlocked) {
+                    buffsUnlocked[key] = buffsUnlocked[key] * 2;
+                }
+            } else {
+                buffsUnlocked[value] = buffsUnlocked[value] * 2;
+                console.log(buffsUnlocked);
+            }
+        }
     });
 
     const upgrades = document.querySelectorAll('#upgradeArea #shopTabs #listOuter #list .item');
@@ -147,15 +168,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const newImg = document.createElement("img");
 
         if (resources >= cost) {
-            newImg.src = img.src;
-            newImg.classList.add("infoImage");
-            column.appendChild(newImg);
             resources = resources - cost;
             resourceCounter.textContent =
                 formatter.format(resources) + " resources";
 
             cost = Math.floor(cost * 1.1) + 1;
             costEl.textContent = formatter.format(cost);
+
+            newImg.src = img.src;
+            newImg.classList.add("infoImage");
+            column.appendChild(newImg);
 
             if (name in boughtUpgrades) {
                 console.log('exists');
