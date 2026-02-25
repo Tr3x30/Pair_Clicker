@@ -81,9 +81,14 @@ function checkAchievements() {
         }
 
         if (resources >= achievement['requirement']) {
-            console.log('achievement get: ', i);
+            const box = document.getElementById('achievement-box');
+            box.textContent = "Achievment Unlocked: " + i
+            box.classList.add('show');
             achievement['unlocked'] = true;
             resources += Math.floor(achievement['requirement'] / 100);
+            setTimeout(() => {
+                box.classList.remove('show');
+            }, 3000);
         }
     }
 }

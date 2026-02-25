@@ -170,3 +170,22 @@
         font-size: 2vw;
     }
 }
+
+#upgradeArea .hidden {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+#upgradeArea .show {
+    transform: translateX(0);
+    opacity: 1;
+}
+#upgradeArea #achievement-box {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #333;
+    color: white;
+    padding: 15px;
+    z-index: 1000;
+}
