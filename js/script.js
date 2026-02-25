@@ -1,4 +1,4 @@
-let resources = 525590;
+let resources = 40;
 let resourcesPerSecond = 0;
 let boughtUpgrades = {
     "GRANDMA": 0,
@@ -25,17 +25,24 @@ let achievements = {
     "I would bake five hundred more": { unlocked: false, requirement: 500 },
     "To be the man that baked a thousand donuts": { unlocked: false, requirement: 1000 },
     "To fall down at your door": { unlocked: false, requirement: 1500 },
+    "Proof That I Love You 3000": { unlocked: false, requirement: 3000 },
     "Pocket Change": { unlocked: false, requirement: 5000 },
     "Five Digits, Baby": { unlocked: false, requirement: 10000 },
+    "20,000 Leagues Under the Glaze": { unlocked: false, requirement: 20000 },
+    "Warhammer 40,000 Calories": { unlocked: false, requirement: 40000 },
     "Resource Hoarder": { unlocked: false, requirement: 50000 },
     "Six Figure Clicker": { unlocked: false, requirement: 100000 },
+    "Beverly Hills 90,210": { unlocked: false, requirement: 90210 },
     "♫ 525,600 Donuts ♫": { unlocked: false, requirement: 525600 },
     "Millionaire Mindset": { unlocked: false, requirement: 1000000 },
+    "88 MPH Sugar Rush": { unlocked: false, requirement: 1210000 },
     "Resource Tycoon": { unlocked: false, requirement: 2500000 },
     "Economic Overlord": { unlocked: false, requirement: 5000000 },
+    "Fluent in 6,000,000 Forms of Donuts": { unlocked: false, requirement: 6000000 },
     "Untouchable Empire": { unlocked: false, requirement: 7500000 },
-    "Ten Million Strong": { unlocked: false, requirement: 10000000 },
-    "To see all the possible outcomes...": { unlocked: false, requirement: 14000005 }
+    "Jenny’s Bakery": { unlocked: false, requirement: 8675309 },
+    "♫ You would not believe your eyes ♫": { unlocked: false, requirement: 10000000 },
+    "All the possible glazes for the coming donuts": { unlocked: false, requirement: 14000605 }
 };
 
 // ChatGPT cookup
@@ -76,6 +83,7 @@ function checkAchievements() {
         if (resources >= achievement['requirement']) {
             console.log('achievement get: ', i);
             achievement['unlocked'] = true;
+            resources += Math.floor(achievement['requirement'] / 100);
         }
     }
 }
@@ -160,6 +168,17 @@ function getFirstVisibleChild(element) {
     }
 }
 
+function addBuff(buffID) {
+    if (buffID === "ALL") {
+        for (key in buffsUnlocked) {
+            buffsUnlocked[key] = buffsUnlocked[key] * 2;
+        }
+    } else {
+        buffsUnlocked[buffID] = buffsUnlocked[buffID] * 2;
+        console.log(buffsUnlocked);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const btn = document.querySelector('#generationArea #buttonContainer');
     let popping = false
@@ -187,14 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
             buff.style.display = "none";
             getFirstVisibleChild(buff.parentElement).style.marginLeft = "0";
 
-            if (value === "ALL") {
-                for (key in buffsUnlocked) {
-                    buffsUnlocked[key] = buffsUnlocked[key] * 2;
-                }
-            } else {
-                buffsUnlocked[value] = buffsUnlocked[value] * 2;
-                console.log(buffsUnlocked);
-            }
+            addBuff(value);
         }
     });
 

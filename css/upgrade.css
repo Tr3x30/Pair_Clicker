@@ -160,3 +160,13 @@
     left: 50%;
     top: 5vh;
 }
+
+@media screen and (max-width: 768px) {
+    #upgradeArea #list .item .info #purchase #name {
+        font-size: 4vw;
+    }
+
+    #upgradeArea #buffShop .buff {
+        font-size: 2vw;
+    }
+}
