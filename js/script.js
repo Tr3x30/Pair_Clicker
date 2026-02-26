@@ -1,4 +1,4 @@
-let resources = 40;
+let resources = 4000000;
 let resourcesPerSecond = 0;
 let boughtUpgrades = {
     "GRANDMA": 0,
@@ -209,7 +209,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resources >= cost) {
             resources = resources - cost;
             buff.style.display = "none";
-            getFirstVisibleChild(buff.parentElement).style.marginLeft = "0";
+
+            let firstVisible = getFirstVisibleChild(buff.parentElement);
+            console.log(firstVisible);
+            if (firstVisible) {
+                getFirstVisibleChild(buff.parentElement).style.marginLeft = "0";
+            }
+
 
             addBuff(value);
         }
