@@ -1,3 +1,9 @@
+/*
+Author: Trevor, Hongkiu, Spencer
+Created: Feb 11, 2025
+Description: CSS for Upgrade Panel
+*/
+
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -173,10 +179,12 @@
     opacity: 0;
     transition: all 0.5s ease-in-out;
 }
+
 #upgradeArea .show {
     transform: translateX(0);
     opacity: 1;
 }
+
 #upgradeArea #achievement-box {
     position: fixed;
     top: 20px;

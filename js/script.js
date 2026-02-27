@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let resourceIntervalID = 0;
     let speed = 1000;
-    let resources = 500000;
+    let resources = 0;
     let resourcesPerSecond = 0;
 
     let boughtUpgrades = {
