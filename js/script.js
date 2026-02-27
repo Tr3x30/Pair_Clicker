@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "All the possible glazes for the coming donuts": { unlocked: false, requirement: 14000605 }
     };
 
-    // ChatGPT cookup
     const formatter = new Intl.NumberFormat('en-US', {
         notation: 'compact',
         maximumFractionDigits: 1
@@ -174,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
         generationCounter.textContent = formatter.format(resourcesPerSecond) + " per second";
     }
 
-    // ChatGPT assist
     function getFirstVisibleChild(element) {
         const children = element.children;
         console.log(element);

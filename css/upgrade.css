@@ -71,13 +71,10 @@
     margin-left: 0;
 }
 
-/* content area: no fixed height */
 #upgradeArea #listOuter {
     flex: 0 0 auto;
-    /* just take the height it needs */
     position: relative;
     background-color: aqua;
-    /* REMOVE height: 65vh; */
 }
 
 #upgradeArea #list {
