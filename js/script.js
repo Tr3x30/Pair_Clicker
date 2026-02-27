@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let speed = 1000;
     let resources = 500000;
     let resourcesPerSecond = 0;
+
     let boughtUpgrades = {
         "GRANDMA": 0,
         "GRANDPA": 0,
