@@ -70,12 +70,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return suffix ? value * multipliers[suffix] : value;
     }
 
+
+    /**
+     * Generates a random number between given inputs (inclusive)
+     * @param {Number} min 
+     * @param {Number} max 
+     * @returns Random number
+     */
     function getRandomIntInclusive(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+    /**
+     * Checks for completed achievements
+     */
     function checkAchievements() {
         for (const i in achievements) {
             let achievement = achievements[i];
@@ -96,6 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /**
+     * Adds resource(s) to player and updates related text.
+     * Calls achievement check.
+     * 
+     * @param {Event} e 
+     * @param {Boolean} popping 
+     * @param {HTMLElement} btn 
+     */
     function gainResourcesButton(e, popping, btn) {
         const resourceCounter = document.querySelector('#generationArea #resourceCounter');
 
@@ -135,6 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { once: true });
     }
 
+    /**
+     * Add resources automatically and check for achievements.
+     * Update relevant text.
+     */
     function automaticResourceGeneration() {
         const resourceCounter = document.querySelector('#generationArea #resourceCounter');
         resources += resourcesPerSecond * (speed / 1000);
@@ -144,6 +166,9 @@ document.addEventListener('DOMContentLoaded', () => {
             formatter.format(resources) + " Donuts";
     }
 
+    /**
+     * Set up interval for automatic resource generation
+     */
     function automaticInterval() {
         console.log("ID: " + resourceIntervalID);
 
@@ -153,6 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
         resourceIntervalID = setInterval(automaticResourceGeneration, speed);
     }
 
+    /**
+     * Calculate the number of resources to generate per second and update text
+     */
     function calculateResourcesPerSecond() {
         const generationCounter = document.querySelector('#generationArea #perSecond');
         let perSecond = 0;
@@ -173,6 +201,12 @@ document.addEventListener('DOMContentLoaded', () => {
         generationCounter.textContent = formatter.format(resourcesPerSecond) + " per second";
     }
 
+    /**
+     * Returns the first visible child of the given element.
+     * 
+     * @param {HTMLElement} element 
+     * @returns Child of given element
+     */
     function getFirstVisibleChild(element) {
         const children = element.children;
         console.log(element);
@@ -185,6 +219,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /**
+     * Adds upgrade buffs to resource generation
+     * 
+     * @param {number} buffID 
+     */
     function addBuff(buffID) {
         if (buffID === "ALL") {
             buffsUnlocked["CLICK"] = buffsUnlocked["CLICK"] * 2;
