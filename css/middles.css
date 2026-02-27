@@ -57,6 +57,21 @@ Description: CSS for visual display of upgrades
 
 }
 
+#achievementPanel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+
+    width: 100%;
+    min-height: 200px;
+    height: auto;
+    overflow: hidden;
+
+    padding-bottom: 10px;
+    border-bottom: 2px solid #444;
+}
+
 .column {
     display: flex;
     flex-wrap: wrap;
@@ -70,6 +85,14 @@ Description: CSS for visual display of upgrades
 
     padding-bottom: 10px;
     border-bottom: 2px solid #444;
+}
+
+.achievementImage {
+    width: 10%;
+    aspect-ratio: 1;
+    margin: 5px;
+    object-fit: scale-down;
+    background-color: black;
 }
 
 .infoImage {

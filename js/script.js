@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let resourceIntervalID = 0;
     let speed = 1000;
-    let resources = 0;
+    let resources = 40;
     let resourcesPerSecond = 0;
 
     let boughtUpgrades = {
@@ -98,10 +98,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 box.textContent = "Achievment Unlocked: " + i
                 box.classList.add('show');
                 achievement['unlocked'] = true;
-                resources += Math.floor(achievement['requirement'] / 100);
+                resources += Math.floor(achievement['requirement'] * 100);
                 setTimeout(() => {
                     box.classList.remove('show');
                 }, 3000);
+                const panel = document.getElementById('achievementPanel');
+                const newImg = document.createElement("img");
+                let j = "placeholder"
+                console.log(achievement['requirement']);
+                newImg.src = "images/a" + achievement['requirement'] + ".png";
+                newImg.classList.add("achievementImage");
+                panel.appendChild(newImg);
             }
         }
     }
