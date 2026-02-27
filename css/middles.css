@@ -14,6 +14,49 @@ Description: CSS for visual display of upgrades
     height: 100vh;
 }
 
+#help {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+    width: 100%;
+
+    min-height: 50px;
+    justify-content: center;
+    align-content: center;
+    height: auto;
+    overflow: hidden;
+
+    padding-bottom: 10px;
+    border-bottom: 2px solid #444;
+    cursor: pointer;
+}
+
+#help:hover>#helpImage {
+    display: block;
+    z-index: 10;
+}
+
+#help:hover:not(:has(#background:hover)) #background {
+    display: block;
+    position: absolute;
+    background-color: #444444AA;
+    width: 100vw;
+    height: 100vw;
+    z-index: 2;
+}
+
+#background:hover {
+    display: none;
+}
+
+#help #helpImage {
+    display: none;
+    position: absolute;
+
+}
+
 .column {
     display: flex;
     flex-wrap: wrap;

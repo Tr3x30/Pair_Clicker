@@ -36,7 +36,7 @@ Description: CSS for Upgrade Panel
     height: auto;
     width: 90%;
     padding: 5%;
-    background-color: brown;
+    background-color: beige;
     align-items: center;
     overflow-x: auto;
     overflow-y: hidden;
@@ -47,7 +47,7 @@ Description: CSS for Upgrade Panel
 #upgradeArea #buffShop .buff {
     flex-shrink: 0;
     position: relative;
-    background-color: chocolate;
+    background-color: aqua;
     width: 20%;
     aspect-ratio: 1;
     margin-left: 2vh;
@@ -69,18 +69,13 @@ Description: CSS for Upgrade Panel
 }
 
 #upgradeArea #buffShop .buff:first-child {
-    flex-shrink: 0;
-    position: relative;
-    background-color: chocolate;
-    width: 20%;
-    aspect-ratio: 1;
     margin-left: 0;
 }
 
 #upgradeArea #listOuter {
     flex: 0 0 auto;
     position: relative;
-    background-color: aqua;
+    background-color: blanchedalmond;
 }
 
 #upgradeArea #list {
@@ -97,7 +92,8 @@ Description: CSS for Upgrade Panel
     justify-content: space-between;
     flex-direction: row;
     margin: 2.5% 5%;
-    background-color: pink;
+    padding: 1%;
+    background-color: aqua;
     min-height: 45px;
 }
 
@@ -118,7 +114,6 @@ Description: CSS for Upgrade Panel
 #upgradeArea #list .item .info {
     display: flex;
     position: relative;
-    background-color: orange;
     flex-direction: row;
     justify-content: space-between;
 }
@@ -126,7 +121,6 @@ Description: CSS for Upgrade Panel
 #upgradeArea #list .item #purchase {
     display: flex;
     position: relative;
-    background-color: blue;
     flex-direction: column;
     justify-content: space-between;
     padding: 0 2%;
